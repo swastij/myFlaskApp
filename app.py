@@ -8,8 +8,6 @@ app.config['SECRET_KEY']= '71e8b3b0948b429cabacb58ba5d8c3f9'
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
 db=SQLAlchemy(app)
 
-db.create_all()
-db.session.commit()
 
 class User(db.Model):        #inheriting db.Model
     id=db.Column(db.Integer, primary_key=True)
@@ -51,9 +49,6 @@ post=[
 # db.session.add(user)
 # db.session.commit()
 
-users = User.query.all()
-for u in users:
-    print(u)
 
 @app.route('/')        
 @app.route('/home')
