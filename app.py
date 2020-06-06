@@ -45,7 +45,7 @@ post=[
 ]
 #db.create_all()
 #db.session.commit()
-# user = User(username="test1",  email="test1@abc.com", password="test", image_file="asd")
+# user = User(username="test1", email="test1@abc.com", password="test", image_file="asd")
 # db.session.add(user)
 # db.session.commit()
 
