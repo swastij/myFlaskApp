@@ -1,8 +1,12 @@
 from datetime import datetime
-from flaskblog import db #__main__ is replaced because flaskblog will not be called __main__ but it db will be accessed through __init__ now
+from flaskblog import db, login_manager #__main__ is replaced because flaskblog will not be called __main__ but it db will be accessed through __init__ now
+from flask_login import UserMixin
 
+@login_manager.user_loader  #login extension needs this decorator to load/find user through user_id, it is necessity for its proper working
+def load_user(user_id):
+    return User.query.get(int(user_id)) #typecasted just to be sure
 
-class User(db.Model):        #inheriting db.Model
+class User(db.Model, UserMixin):        #inheriting db.Model
     id=db.Column(db.Integer, primary_key=True)
     username=db.Column(db.String(20), unique=True, nullable=False)
     email=db.Column(db.String(120), unique=True, nullable=False)

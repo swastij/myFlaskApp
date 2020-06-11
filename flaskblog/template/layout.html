@@ -31,8 +31,13 @@
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
-                  <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
-                  <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
+                  {% if current_user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{{url_for('account')}}">Account</a>
+                     <a class="nav-item nav-link" href="{{url_for('logout')}}">Logout</a>
+                  {% else %}
+                    <a class="nav-item nav-link" href="{{url_for('login')}}">Login</a>
+                    <a class="nav-item nav-link" href="{{url_for('register')}}">Register</a>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -41,8 +46,8 @@
         <main role="main" class="container">
           <div class="row">
             <div class="col-md-8">
-              <!-- following is to display flashed msgs on any page -->
-              {% with messages = get_flashed_messages(with_categories=true) %}  <!-- category here will be like 'success' we passed thru flash  -->
+              <!-- following is to display flashed msgs on any page --><!-- category here will be like 'success' we passed thru flash  -->
+              {% with messages = get_flashed_messages(with_categories=true) %}  
                 {% if messages %}
                   {% for message,category in messages %}
                     <div class="alert alert-{{category}}">
