@@ -3,7 +3,7 @@
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}     <!--does something abt security ->CSRF -->
-            <fieldset class="form-group">   <!-- bootstrap stuff -->
+            <fieldset class="form-group">   <!-- bootstrap stuff; legend is caption for fieldset -->
                 <legend class="border-bottom mb-4">Join Today</legend>
                 <div class="form-group">
                     {{ form.username.label(class="form-control-label") }}
